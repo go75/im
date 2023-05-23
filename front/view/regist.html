@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="Shortcut Icon" href="/favicon.ico"/>
+  <title>im系统</title>
+  <style type="text/css">
+    body {
+        height: 100%;
+        background-image: linear-gradient(to right, deepskyblue, violet);
+        text-align: center;
+    }
+
+    h1 {
+      color: grey;
+      margin-top: 3%;
+      margin-bottom: 5%;
+    }
+
+    input {
+      border: 0;
+      width: 50%;
+      height: 10%;
+      font-size: 20px;
+      font-weight: bold;
+      color: grey;
+      background: transparent;
+      border-bottom: 2px solid white;
+      padding: 5px 10px;
+      outline: none;
+      margin-bottom: 5%;
+    }
+
+    button {
+      width: 25%;
+      height: 50px;
+      border-radius: 10px;
+      border: 0;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      background-image: linear-gradient(to right, #30cfd0, #330867);
+      margin-bottom: 3%;
+    }
+
+    a {
+      color: white;
+      cursor: pointer;
+      padding-bottom: 0%;
+    }
+
+  </style>
+  <script type="text/javascript">
+    let name
+    let pwd
+    let check
+    let head
+
+    function btnFn() {
+      let xhr = new XMLHttpRequest()
+      xhr.open('post', 'http://' + window.location.hostname + ':' + window.location.port + '/regist', false)
+      let data = new FormData()
+      data.append('name', name.value)
+      data.append('pwd', pwd.value)
+      data.append('check', check.value)
+      data.append('head', head.files[0])
+      xhr.send(data)
+      if (xhr.status == 200) {
+          let text = xhr.responseText
+          alert(text)
+      }
+    }
+    // function headFn(event) {
+    //   const file = event.target.files[0]
+    //   console.log(file.type)
+    //   let reader = new FileReader();
+    //   reader.readAsDataURL(file);
+    //   reader.onload = function(e) {
+    //       head = e.target.result;
+    //   }
+    // }
+    function chooseHead() {
+      document.getElementById('head').click()
+    }
+    window.onload = function() {
+      name = document.getElementById('name')
+      pwd = document.getElementById('pwd')
+      check = document.getElementById('check')
+      head = document.getElementById('head')
+      document.getElementsByTagName('a')[0].href = 'http://' + window.location.hostname + ':' + window.location.port + '/login'
+    }
+  </script>
+</head>
+
+<body>
+    <h1>注册</h1>
+    <input id="name" type="text" placeholder="用户名">
+    <input id="pwd" type="password" placeholder="密码">
+    <input id="check" type="password" placeholder="确认密码">
+    <input style="display: none;" id="head" accept="image/*" type="file" >
+    <br>
+    <button onclick="chooseHead()">选择头像</button>
+    <br>
+    <button onclick="btnFn()">注册</button>
+    <br>
+    <a>已有账户?点击登录</a>
+</body>
+</html>

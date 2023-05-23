@@ -1,0 +1,24 @@
+{
+    "Database": {
+        "DSN": "root:1234@tcp(127.0.0.1:3306)/im?charset=utf8mb4&parseTime=True&loc=Local",
+        "SlowThreshold": 1000,
+        "LogLevel": 4,
+        "Colorful": true
+    },
+    "Redis": {
+        "Addr": "127.0.0.1:6379",
+        "DB": 0,
+        "PoolSize": 5,
+        "MinIdleConns": 5,
+        "ExpiredTime": 10
+    },
+    "Dispatcher": {
+        "Size": 5 
+    },
+    "Jwt": {
+        "ExpiredTime": 3600
+    },
+    "Log": {
+        "Location": "./error.log"
+    }
+}

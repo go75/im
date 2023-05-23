@@ -1,0 +1,157 @@
+@import './base.css';
+
+.home{
+  display: flex;
+  justify-content: center;
+}
+.main{
+  border-radius: 10px;
+  width: 1080px;
+  height: 720px;
+  background: #ffffff;
+  display: flex;
+  box-shadow: 5px 5px 10px 10px #aaaaaa;
+}
+.nav{
+  flex: 1;
+  border-right: 1px solid #aaaaaa;
+  background-color: rgb(247,247,247);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.content{
+  flex: 18;
+}
+
+.list{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.list-left{
+  padding-top: 10px;
+  margin-left: 10px;
+  /* overflow-y: scroll; */
+  flex: 1;
+  border-right: 1px solid #aaaaaa;
+}
+.session-list{
+  overflow-y: scroll;
+  height: 280px;
+}
+.msg{
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.msg:hover{
+  background-color: #7dddd7;
+}
+.msg-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.msg-title{
+  margin-left: 5px;
+}
+.list-right{
+  background-color: #f1f1f1;
+  flex: 4;
+}
+.chats{
+  overflow-y: scroll;
+  height: 630px;
+}
+.list-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.chat-left{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.chat-right{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+}
+.chat-title{
+  height: 30px;
+  text-align: center;
+}
+
+.left-msg{
+  margin-left: 3px;
+  background-color: white;
+  border-radius: 5px;
+  max-width: 360px;
+  word-wrap:break-word;
+  padding: 5px 5px 5px 5px;
+}
+
+.right-msg{
+  margin-right: 3px;
+  background-color: #88ff88;
+  border-radius: 5px;
+  max-width: 360px;
+  word-wrap:break-word;
+  padding: 5px 5px 5px 5px;
+}
+
+.left-audio{
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.right-audio{
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.chat-boom{
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #aaaaaa;
+}
+
+.input-btn{
+  height: 38px;
+  margin-right: 15px;
+}
+.new-list{
+  display: flex;
+  overflow-y: scroll;
+  height: 682px;
+}
+
+.audioDiv{
+  top: 100px;
+  position: absolute;
+  z-index: 1;
+  background-color: bisque;
+}
+
+.audio-btn{
+  background-color: #7dddd7;
+}
+
+.chess-user-list{
+  overflow-y: scroll;
+  height: 110px;
+}
+
+.search-list{
+  flex: 1;
+  border-left: 1px solid #7dddd7;
+  border-right: 1px solid #7dddd7;
+  border-top: 1px solid #7dddd7;
+  border-bottom: 1px solid #7dddd7;
+}

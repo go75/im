@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="Shortcut Icon" href="/favicon.ico"/>
+  <title>im系统</title>
+  <style type="text/css">
+    body {
+        height: 100%;
+        background-image: linear-gradient(to right, deepskyblue, violet);
+        text-align: center;
+    }
+
+    h1 {
+      color: grey;
+      margin-top: 3%;
+      margin-bottom: 5%;
+    }
+
+    input {
+      border: 0;
+      width: 50%;
+      height: 10%;
+      font-size: 20px;
+      font-weight: bold;
+      color: grey;
+      background: transparent;
+      border-bottom: 2px solid white;
+      padding: 5px 10px;
+      outline: none;
+      margin-bottom: 5%;
+    }
+
+    button {
+      width: 25%;
+      height: 50px;
+      border-radius: 10px;
+      border: 0;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      background-image: linear-gradient(to right, #30cfd0, #330867);
+      margin-bottom: 3%;
+    }
+
+    a {
+      color: white;
+      cursor: pointer;
+      padding-bottom: 0%;
+    }
+
+  </style>
+  <script type="text/javascript">
+    let name
+    let pwd
+    function doReq(method, url, data, ok) {
+        xhr.open(method, url, false)
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.send(data)
+        if (xhr.status == 200) {
+            ok(xhr.responseText)
+        }
+    }
+    function pFn() {
+      location.replace('http://' + window.location.hostname + ':' + window.location.port + '/regist')
+    }
+    function btnFn() {
+      let xhr = new XMLHttpRequest()
+      xhr.open('post', 'http://' + window.location.hostname + ':' + window.location.port + '/login', false)
+      let data = new FormData()
+      data.append('name', name.value)
+      data.append('pwd', pwd.value)
+      xhr.send(data)
+      if (xhr.status == 200) {
+          let text = xhr.responseText
+          console.log(text)
+          let obj = JSON.parse(text)
+          if (obj.code != 0) {
+            // 登录失败
+            alert(obj.msg)
+            return
+          }
+          let data = obj.data
+          console.log(data)
+          console.log('resp token: '+ data.Token)
+          document.cookie = 'im-token=' + data.Token + '; path=/; max-age=' + 7*24*60*60
+          localStorage.setItem("id", data.ID)
+          localStorage.setItem("name", data.Name)
+          setTimeout(function(){
+            location.replace('http://' + window.location.hostname + ':' + window.location.port)
+          }, 1000)
+      }
+    }
+    function headFn(event) {
+      const file = event.target.files[0]
+      console.log(file.type)
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function(e) {
+          head = e.target.result;
+      }
+    }
+    window.onload = function() {
+      name = document.getElementById('name')
+      pwd = document.getElementById('pwd')
+      document.getElementsByTagName('a')[0].href = 'http://' + window.location.hostname + ':' + window.location.port + '/regist'
+    }
+    
+  </script>
+</head>
+
+<body>
+    <h1>登录</h1>
+    <input id="name" type="text" placeholder="用户名">
+    <input id="pwd" type="password" placeholder="密码">
+    <br>
+    
+    <button id="btn" onclick="btnFn()">登录</button>
+    
+    <br>
+    <a>没有账户?点击注册</a>
+
+</body>
+</html>

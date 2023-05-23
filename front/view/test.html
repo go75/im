@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="chess" width="450px" height="450px"></canvas>
+</body>
+<script>
+    window.onload = function() {
+        let chess = document.getElementById('chess')
+        let ctx = chess.getContext("2d")
+        ctx.strokeStyle = "#b9b9b9"
+        ctx.moveTo(15, 15)
+        ctx.lineTo(435, 15)
+        ctx.stroke()
+    }
+</script>
+<style>
+    canvas{
+        background-color: antiquewhite;
+        text-align: center;
+    }
+</style>
+</html>

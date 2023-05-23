@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video ref="v1" autoplay playsinline muted controls></video>
+    <button @click="openCamera()">打开摄像头</button>
+    <button @click="closeCamera()">关闭摄像头</button>
+</body>
+<script>
+    function openCamera() {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+            v1.value.srcObject = stream
+        }).catch(err => {
+            console.error("get user media err: " + err)
+        })
+    }
+    function closeCamera() {
+        let tracks = v1.value.srcObject.getTracks()
+        for (var i = 0; i < tracks.length; i++) {
+            tracks[i].stop()
+        }
+    }
+</script>
+
+</html>

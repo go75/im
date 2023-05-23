@@ -1,0 +1,41 @@
+/* color palette from <https://github.com/vuejs/theme> */
+
+ul {
+  top: 515px;
+  position: absolute;
+  width: 485px;
+  z-index: 1;
+  background-color: aliceblue;
+  padding-inline-start: 10px
+}
+
+li{
+  list-style: none;
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+li img{
+  width: 30px;
+  height: 30px;
+}
+
+video{
+  width: 300px;
+  height: 300px;
+}
+input::-ms-input-placeholder{
+  text-align: center;
+}
+input::-webkit-input-placeholder{
+  text-align: center;
+}
+input{
+  width: 450px;
+  height: 32px;
+  font-size: 18px;
+  text-align: center;
+}
